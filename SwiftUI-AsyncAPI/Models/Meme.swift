@@ -6,7 +6,6 @@
 //  Copyright © 2019 Kaique Magno Dos Santos. All rights reserved.
 //
 
-import Combine
 import SwiftUI
 
 struct Meme:Codable,Identifiable {

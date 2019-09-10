@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         ZStack{
             VStack{
-                if !$memeListObservable.memes.isEmpty {
+                if !self.memeListObservable.memes.isEmpty {
                     List(self.memeListObservable.memes) { meme in
                         MemeCell(dataImage: DataAsyncObservable(urlPath: meme.url), text: meme.name)
                     }
