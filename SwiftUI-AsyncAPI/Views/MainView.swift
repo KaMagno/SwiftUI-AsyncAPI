@@ -14,25 +14,23 @@ struct MainView: View {
     
     var body: some View {
         ZStack{
-            VStack{
-                if !self.memeListObservable.memes.isEmpty {
-                    List(self.memeListObservable.memes) { meme in
-                        MemeCell(dataImage: DataAsyncObservable(urlPath: meme.url), text: meme.name)
-                    }
-                    .onAppear {
-                        self.showLoader.toggle()
-                    }
-                
-                }else{
-                    Button(action: {
-                        self.memeListObservable.loadMemes()
-                        self.showLoader.toggle()
-                    }) {
-                        Text("Press Me!")
-                    }
+            //Se a lista é vazia apresenta um botão
+            if self.memeListObservable.memes.isEmpty {
+                PressMeButton {
+                    self.memeListObservable.loadMemes()
+                    self.showLoader.toggle()
                 }
+            
+            //Se a lista não é vazia apresenta a uma list de view.
+            }else{
+                MemeListView(memeList: self.memeListObservable.memes)
+                    .onAppear(perform: {
+                        self.showLoader.toggle()
+                    })
             }
-            if showLoader {
+            
+            //Apresenta o Loader se for necessário
+            if self.showLoader {
                 LoaderView()
             }
         }

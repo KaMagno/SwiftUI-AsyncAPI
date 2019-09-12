@@ -12,19 +12,22 @@ import SwiftUI
 struct MemeCell: View {
     @ObservedObject var dataImage: DataAsyncObservable
     let text: String?
+    let imageSize:CGFloat = 120.0
     
     @ViewBuilder
     var body: some View {
         if dataImage.data.isEmpty {
             LoaderView()
+                .frame(width: UIScreen.main.bounds.width, alignment: .center)
         }else{
             HStack(alignment: .center) {
-                VStack(alignment: .center) {
-                    Image(uiImage: UIImage(data: dataImage.data) ?? UIImage(imageLiteralResourceName: "Error"))
-                        .resizable()
-                        .frame(width: 60.0, height: 60.0)
-                    text.map({Text($0)})
-                }
+                Image(uiImage: UIImage(data: dataImage.data) ?? UIImage(imageLiteralResourceName: "Error"))
+                    .resizable()
+                    .frame(width: imageSize, height: imageSize, alignment: .center)
+                text.map({
+                    Text($0)
+                        
+                })
             }
         }
     }
