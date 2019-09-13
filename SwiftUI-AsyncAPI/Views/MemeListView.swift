@@ -18,8 +18,10 @@ struct MemeListView: View {
     }
 }
 
+#if DEBUG
 struct MemeListView_Previews: PreviewProvider {
     static var previews: some View {
         MemeListView()
     }
 }
+#endif
