@@ -18,10 +18,13 @@ final class DataAsyncObservable: ObservableObject {
         URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let self = self else { return }
             guard let data = data else { return }
-
-            DispatchQueue.main.async { self.data = data }
-            
-            }.resume()
+            DispatchQueue.main.async {
+                
+                ///Atualiza a propriedade de data.
+                self.data = data
+                
+            }
+        }.resume()
     }
 }
 

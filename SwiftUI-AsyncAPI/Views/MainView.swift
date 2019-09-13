@@ -14,14 +14,14 @@ struct MainView: View {
     
     var body: some View {
         ZStack{
-            //Se a lista é vazia apresenta um botão
+            ///Se a lista é vazia apresenta um botão
             if self.memeListObservable.memes.isEmpty {
                 PressMeButton {
                     self.memeListObservable.loadMemes()
                     self.showLoader.toggle()
                 }
             
-            //Se a lista não é vazia apresenta a uma list de MemeCell.
+            ///Se a lista não é vazia apresenta a uma list de MemeCell.
             }else{
                 MemeListView(memeList: self.memeListObservable.memes)
                     .onAppear(perform: {
@@ -29,7 +29,7 @@ struct MainView: View {
                     })
             }
             
-            //Apresenta o Loader se for necessário
+            ///Apresenta o Loader se for necessário
             if self.showLoader {
                 LoaderView()
             }

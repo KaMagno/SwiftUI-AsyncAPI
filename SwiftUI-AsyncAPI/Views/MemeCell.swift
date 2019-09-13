@@ -24,9 +24,10 @@ struct MemeCell: View {
                 Image(uiImage: UIImage(data: dataImage.data) ?? UIImage(imageLiteralResourceName: "Error"))
                     .resizable()
                     .frame(width: imageSize, height: imageSize, alignment: .center)
+                
+                ///Map é usado aqui para fazer unwrapping de forma segura. Já que não é possivel usar 'If let' e 'guard let'.
                 text.map({
                     Text($0)
-                        
                 })
             }
         }

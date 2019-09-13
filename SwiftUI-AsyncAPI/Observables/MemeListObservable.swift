@@ -20,14 +20,19 @@ final class MemeListObservable: ObservableObject {
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else {return}
                         if let data = response.data {
+                            
+                            ///Atualiza a lista de Memes
                             self.memes = data.memes
+                            
                         }else if let error = response.errorMessage {
+                            
+                            ///Atualiza a propriedade de erro caso houver algum
                             self.error = error
+                            
                         }else{
                             fatalError("API throw something unreadable")
                         }
-                    }
-                    
+                    } 
                 case .failure(let error):
                     print(error)
             }
