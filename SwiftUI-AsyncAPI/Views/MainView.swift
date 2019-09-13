@@ -21,7 +21,7 @@ struct MainView: View {
                     self.showLoader.toggle()
                 }
             
-            //Se a lista não é vazia apresenta a uma list de view.
+            //Se a lista não é vazia apresenta a uma list de MemeCell.
             }else{
                 MemeListView(memeList: self.memeListObservable.memes)
                     .onAppear(perform: {
